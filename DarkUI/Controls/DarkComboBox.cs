@@ -1,5 +1,4 @@
 ﻿using DarkUI.Config;
-using DarkUI.Icons;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -89,15 +88,21 @@ namespace DarkUI.Controls
             Invalidate();
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            Invalidate();
+        }
+
         protected override void OnInvalidated(InvalidateEventArgs e)
         {
             base.OnInvalidated(e);
             PaintCombobox();
         }
 
-        protected override void OnResize(EventArgs e)
+        protected override void OnEnabledChanged(EventArgs e)
         {
-            base.OnResize(e);
+            base.OnEnabledChanged(e);
             _buffer = null;
             Invalidate();
         }
@@ -111,12 +116,14 @@ namespace DarkUI.Controls
             {
                 var rect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
 
-                var textColor = Colors.LightText;
-                var borderColor = Colors.GreySelection;
-                var fillColor = Colors.LightBackground;
+                var textColor = Enabled
+                    ? ThemeProvider.Theme.Colors.LightText
+                    : ThemeProvider.Theme.Colors.DisabledText;
+                var borderColor = ThemeProvider.Theme.Colors.GreySelection;
+                var fillColor = ThemeProvider.Theme.Colors.LightBackground;
 
                 if (Focused && TabStop)
-                    borderColor = Colors.BlueHighlight;
+                    borderColor = ThemeProvider.Theme.Colors.BlueHighlight;
 
                 using (var b = new SolidBrush(fillColor))
                 {
@@ -131,7 +138,7 @@ namespace DarkUI.Controls
 
                 var icon = ScrollIcons.scrollbar_arrow_hot;
                 g.DrawImageUnscaled(icon,
-                                    rect.Right - icon.Width - (Consts.Padding / 2),
+                                    rect.Right - icon.Width - (ThemeProvider.Theme.Sizes.Padding / 2),
                                     (rect.Height / 2) - (icon.Height / 2));
 
                 var text = SelectedItem != null ? SelectedItem.ToString() : Text;
@@ -142,7 +149,7 @@ namespace DarkUI.Controls
 
                     var modRect = new Rectangle(rect.Left + padding,
                                                 rect.Top + padding,
-                                                rect.Width - icon.Width - (Consts.Padding / 2) - (padding * 2),
+                                                rect.Width - icon.Width - (ThemeProvider.Theme.Sizes.Padding / 2) - (padding * 2),
                                                 rect.Height - (padding * 2));
 
                     var stringFormat = new StringFormat
@@ -172,13 +179,13 @@ namespace DarkUI.Controls
             var g = e.Graphics;
             var rect = e.Bounds;
 
-            var textColor = Colors.LightText;
-            var fillColor = Colors.LightBackground;
+            var textColor = ThemeProvider.Theme.Colors.LightText;
+            var fillColor = ThemeProvider.Theme.Colors.LightBackground;
 
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected ||
                 (e.State & DrawItemState.Focus) == DrawItemState.Focus ||
                 (e.State & DrawItemState.NoFocusRect) != DrawItemState.NoFocusRect)
-                fillColor = Colors.BlueSelection;
+                fillColor = ThemeProvider.Theme.Colors.BlueSelection;
 
             using (var b = new SolidBrush(fillColor))
             {
