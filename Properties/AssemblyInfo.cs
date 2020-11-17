@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DarkUI")]
-[assembly: AssemblyDescription("Dark themed control and docking library for .NET WinForms.")]
+[assembly: AssemblyTitle("Dark Mode UI")]
+[assembly: AssemblyDescription("Dark themed control and docking library for .NET WinForms based on Robin Perris' DarkUI")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Robin Perris")]
+[assembly: AssemblyCompany("Ricardo Dalarme")]
 [assembly: AssemblyProduct("DarkUI")]
-[assembly: AssemblyCopyright("Copyright © Robin Perris")]
+[assembly: AssemblyCopyright("Copyright © Ricardo Dalarme")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f19472f5-8c44-4c51-a8a0-b9de5f555255")]
+[assembly: Guid("c01573ea-dc3f-4ff8-ab31-3afade0a9005")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.1.0")]
-[assembly: AssemblyFileVersion("2.0.1.0")]
+[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyFileVersion("3.0.0.0")]
